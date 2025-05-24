@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Map from '../components/Map';
 import { fetchCrimes } from '../utils/fetchCrimes';
 import type { Coords, CrimeIncident } from '../types';
+import './MapPage.css'
 
 function getBoundingBox(coords: Coords[]): [number, number, number, number] {
   const lats = coords.map((c) => c[0]);
