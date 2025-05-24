@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddressForm from '../components/AddressForm';
 import type { Coords } from '../types';
+import whereToTitle from '../assets/whereto.png';
+import './AddressPage.css';
 
 const AddressPage: React.FC = () => {
   const [, setRoute] = useState<Coords[]>([]);
@@ -9,14 +11,15 @@ const AddressPage: React.FC = () => {
 
   function onRouteReady(coords: Coords[]) {
     setRoute(coords);
-    // Pass route state to map page via navigation state or URL params
     navigate('/map', { state: { route: coords } });
   }
 
   return (
-    <div style={{ maxWidth: 900, margin: 'auto', padding: 20 }}>
-      <h2>Enter Start and End Addresses</h2>
-      <AddressForm onRouteReady={onRouteReady} />
+    <div className='addresspage'>
+      <div className="address-page-container">
+        <img src={whereToTitle} alt="Where to?" />
+        <AddressForm onRouteReady={onRouteReady} />
+      </div>
     </div>
   );
 };

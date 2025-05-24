@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { Coords } from '../types';
+import './AddressForm.css';
 
 type AddressFormProps = {
   onRouteReady: (routeCoords: Coords[]) => void;
@@ -66,14 +67,13 @@ const AddressForm: React.FC<AddressFormProps> = ({ onRouteReady }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
+    <form onSubmit={handleSubmit} className="address-form">
       <input
         type="text"
         placeholder="Start address"
         value={start}
         onChange={(e) => setStart(e.target.value)}
         required
-        style={{ marginRight: 10, width: 250 }}
       />
       <input
         type="text"
@@ -81,12 +81,11 @@ const AddressForm: React.FC<AddressFormProps> = ({ onRouteReady }) => {
         value={end}
         onChange={(e) => setEnd(e.target.value)}
         required
-        style={{ marginRight: 10, width: 250 }}
       />
       <button type="submit" disabled={loading}>
-        {loading ? 'Loading...' : 'Get Route'}
+        {loading ? 'Loading...' : 'Get Route ->'}
       </button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p>{error}</p>}
     </form>
   );
 };

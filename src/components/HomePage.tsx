@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomePage.css'
+import './HomePage.css';
 import logoImage from '../assets/logo.png';
 import titleText from '../assets/safe-steps-title.png';
 import letsGoButtonText from '../assets/lets-go-button.png';
