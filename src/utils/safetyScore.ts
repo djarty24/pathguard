@@ -1,4 +1,4 @@
-import type { LatLngTuple } from "leaflet";
+import type { LatLngTuple } from 'leaflet';
 
 export const getSafetyScore = (crimes: any[], routeCoords: LatLngTuple[]): number => {
   // Basic scoring: subtract points for each crime within 200m of route
@@ -8,7 +8,8 @@ export const getSafetyScore = (crimes: any[], routeCoords: LatLngTuple[]): numbe
     const nearbyCrimes = crimes.filter((crime) => {
       const lat = parseFloat(crime.latitude);
       const lon = parseFloat(crime.longitude);
-      const distance = haversineDistance(coord, [lat, lon]);
+      // Pass only first two elements of coord explicitly
+      const distance = haversineDistance([coord[0], coord[1]], [lat, lon]);
       return distance < 0.2; // ~200m
     });
 
@@ -19,8 +20,8 @@ export const getSafetyScore = (crimes: any[], routeCoords: LatLngTuple[]): numbe
 };
 
 const haversineDistance = (coord1: [number, number], coord2: [number, number]): number => {
-  const R = 6371; // km
-  const toRad = (deg: number) => deg * Math.PI / 180;
+  const R = 6371; // Earth radius in km
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
 
   const dLat = toRad(coord2[0] - coord1[0]);
   const dLon = toRad(coord2[1] - coord1[1]);
@@ -28,8 +29,9 @@ const haversineDistance = (coord1: [number, number], coord2: [number, number]): 
   const lat1 = toRad(coord1[0]);
   const lat2 = toRad(coord2[0]);
 
-  const a = Math.sin(dLat / 2) ** 2 +
-            Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
 
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 };

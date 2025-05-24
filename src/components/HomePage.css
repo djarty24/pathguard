@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'OpenSauce';
+  src: url('src/assets/open-sauce.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+    color: #735e59;
+    margin: 0;
+}
+
+.homepage {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe5b6;
+}
+
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  font-family: 'OpenSauce';
+}
+
+.homepage-content button {
+    margin: 10px 0;
+    border: none;
+    background-color: #735e59;
+    color: #ffe5b6;
+    border-radius: 100px;
+    padding: 15px 30px;
+    font-family: 'OpenSauce', sans-serif;
+}

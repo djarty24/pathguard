@@ -12,7 +12,7 @@ type MapProps = {
 
 const Map: React.FC<MapProps> = ({ route, crimes }) => {
   const mapRef = useRef<L.Map | null>(null);
-  const routeLayerRef = useRef<L.GeoJSON | null>(null);
+  const routeLayerRef = useRef<L.Polyline | null>(null);
   const crimeLayerRef = useRef<L.LayerGroup | null>(null);
 
   useEffect(() => {

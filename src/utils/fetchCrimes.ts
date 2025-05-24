@@ -1,4 +1,4 @@
-import type { Coords, CrimeIncident } from '../types';
+import type { CrimeIncident } from '../types';
 
 const SF_CRIME_API_URL =
   'https://data.sfgov.org/resource/wg3w-h783.json?$limit=1000';
