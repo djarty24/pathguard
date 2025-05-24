@@ -4,6 +4,7 @@ import Map from '../components/Map';
 import { fetchCrimes } from '../utils/fetchCrimes';
 import type { Coords, CrimeIncident } from '../types';
 import './MapPage.css'
+import mapAndCrimeDataText from '../assets/map-and-crime-data.png';
 
 function getBoundingBox(coords: Coords[]): [number, number, number, number] {
   const lats = coords.map((c) => c[0]);
@@ -52,8 +53,8 @@ const MapPage: React.FC = () => {
   }, [route, navigate]);
 
   return (
-    <div style={{ maxWidth: 900, margin: 'auto', padding: 20 }}>
-      <h2>Map and Crime Data</h2>
+    <div className='map-page' style={{ maxWidth: 900, margin: 'auto', padding: 10 }}>
+      <img src={mapAndCrimeDataText} alt="Logo" style={{ width: '75%', marginBottom: 10, marginTop: 10 }} />
       {loadingCrimes && <p>Loading crime data...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {route.length > 0 && <Map route={route} crimes={crimes} />}
